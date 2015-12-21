@@ -141,7 +141,7 @@ header nav ul li a {
     font-weight: bold;
 }
 
-main {
+#main {
     max-width: 55em;
     max-width: 90ch;
     margin: 0 auto;
