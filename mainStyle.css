@@ -119,8 +119,13 @@ p a:visited {
     color: #808;
 }
 
+p.logo {
+    text-align:center;
+    margin-top:2em;
+}
+
 footer {
-    margin-top: 4em;
+    margin-top: 2em;
     padding: 1em 0.5em;
     padding: 1em 0.8ch;
     background-color: #e5e5e5;
