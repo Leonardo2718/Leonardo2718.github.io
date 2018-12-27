@@ -51,13 +51,19 @@ body {
     line-height: 1.7em;
     min-width: 15em;
     min-width: 24ch;
+
+    color: #888;
+    background-color: #222;
 }
 
 a {
-    color: #3355ff;
+    color: #3377ff;
 }
 a:hover {
     color: #00ccff;
+}
+a:visited {
+    color: #cc00ff;
 }
 
 header {
@@ -125,15 +131,11 @@ h2 {
     font-family: Georgia,Times,Times New Roman,serif;
     font-size: 1.5em;
     font-style: italic;
-    font-weight: normal;
 }
 
 h3 {
     margin-top: 1.2em;
-}
-
-p a:visited {
-    color: #808;
+    font-weight: normal;
 }
 
 p.logo {
@@ -145,7 +147,8 @@ footer {
     margin-top: 2em;
     padding: 1em 0.5em;
     padding: 1em 0.8ch;
-    background-color: #e5e5e5;
+    background-color: black;
+    color: #888;
 }
 
 footer #copyrightNote {
