@@ -27,7 +27,7 @@ markdown: kramdown
 theme: minima
 plugins:
    - jekyll-paginate-v2
-#  - jekyll-feed
+   - jekyll-feed
 
 minima:
     date_format: "%Y-%m-%d"
@@ -38,8 +38,8 @@ pagination:
     #permalink: '/page/:num/'
     #title: ' - page :num'
     #limit: 0
-    #sort_field: 'date'
-    #sort_reverse: true
+    sort_field: 'date'
+    sort_reverse: true
 
 autopages:
     enabled: true
@@ -66,3 +66,6 @@ show_excerpts: true
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# Default post values
+excerpt_separator: <!--more-->
