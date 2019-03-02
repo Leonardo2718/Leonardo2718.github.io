@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Leonardo2718
-#email: leonardo2718@protonmail.com
+email: leonardo2718@protonmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Leonardo Banderali's personal website. Find his blog posts and other information here.
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -25,11 +25,33 @@ linkedin_username: leonardo2718
 # Build settings
 markdown: kramdown
 theme: minima
-#plugins:
+plugins:
+   - jekyll-paginate-v2
 #  - jekyll-feed
 
 minima:
     date_format: "%Y-%m-%d"
+
+pagination:
+    enabled: true
+    per_page: 1
+    #permalink: '/page/:num/'
+    #title: ' - page :num'
+    #limit: 0
+    #sort_field: 'date'
+    #sort_reverse: true
+
+autopages:
+    enabled: true
+    categories:
+        layouts:
+            - 'category-page.html'
+        title: ':cat'
+        permalink: '/category/:cat-:num'
+    collections:
+        enabled: false
+    tags:
+        enabled: false
 
 show_excerpts: true
 
