@@ -14,6 +14,10 @@ a:hover {
     color: #ec0;
 }
 
+.wrapper {
+  max-width: 45em;
+}
+
 .page-content {
     background-image: url("../assets/img/e.png");
     background-attachment: fixed;
@@ -50,6 +54,23 @@ div.dropdown {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+body {
+  @media screen and (min-width: 600px) { // $on-medium = 600px
+    font-size: 14pt;
+  }
+}
+
+.pager {
+  text-align: center;
+  list-style: none;
+
+  .previous, .next {
+    display: inline;
+    padding: 10px;
+    margin: 5px;
+  }
 }
 
 .highlighter-rouge, .highlighter-rouge .highlight, code, pre {

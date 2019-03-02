@@ -1,32 +1,42 @@
 ---
-layout: page
+layout: default
 pagenation:
     enabled: true
 ---
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title | capitalize}}</h1>
+  {%- endif -%}
 
   <ul class="post-list">
     {% for post in paginator.posts %}
       <li>
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-        <h2>
+        <h3>
           <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        </h2>
+        </h3>
+        {%- if site.show_excerpts -%}
+          {{ post.excerpt }}
+        {%- endif -%}
       </li>
     {% endfor %}
   </ul>
 
   {% if paginator.total_pages > 1 %}
-  <ul class="pager">
+  <div class="pager">
       {% if paginator.previous_page %}
-      <li class="previous">
-          <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-      </li>
+      <span class="previous">
+          <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer</a>
+      </span>
       {% endif %}
       {% if paginator.next_page %}
-      <li class="next">
-          <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-      </li>
+      <span class="next">
+          <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older &rarr;</a>
+      </span>
       {% endif %}
-  </ul>
+  </div>
   {% endif %}
+
+</div>
