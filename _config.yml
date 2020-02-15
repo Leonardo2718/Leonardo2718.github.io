@@ -24,6 +24,7 @@ linkedin_username: leonardo2718
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
 theme: minima
 plugins:
    - jekyll-paginate-v2
