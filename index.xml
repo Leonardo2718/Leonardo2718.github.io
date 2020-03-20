@@ -1,40 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Leonardo2718&#39;s Personal Website</title>
+    <title>Leonardo2718&#39;s Website</title>
     <link>https://leonardo2718.github.io/</link>
-    <description>Recent content on Leonardo2718&#39;s Personal Website</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>Copyright &amp;copy; 2020, Leonardo Banderali&lt;br /&gt;&lt;a rel=&#39;license&#39; href=&#39;http://creativecommons.org/licenses/by/4.0/&#39;&gt;&lt;img alt=&#39;Creative Commons License&#39; style=&#39;border-width:0&#39; src=&#39;https://i.creativecommons.org/l/by/4.0/80x15.png&#39; /&gt;&lt;/a&gt;&lt;br /&gt;Except where otherwise noted, content on this site is licensed under a &lt;a rel=&#39;license&#39; href=&#39;http://creativecommons.org/licenses/by/4.0/&#39;&gt;Creative Commons Attribution 4.0 International License&lt;/a&gt;.&lt;br /&gt; Thoughts, views, and opinions on this site are my own.&lt;br /&gt;Powered by &lt;a href=&#39;https://gohugo.io/&#39;&gt;Hugo&lt;/a&gt;. Theme based on &lt;a href=&#39;https://themes.gohugo.io/hugo_theme_pickles/&#39;&gt;pickles&lt;/a&gt; by &lt;a href=&#39;https://github.com/mismith0227&#39;&gt;mismith0227&lt;/a&gt;.</copyright>
-    <lastBuildDate>Sat, 22 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <description>Recent content on Leonardo2718&#39;s Website</description>
+    <generator>Hugo - gohugo.io</generator>
+    <language>en</language>
+    <contact></contact>
+    <copyright>Copyright &copy; 2020, Leonardo Banderali<br /><a rel='license' href='http://creativecommons.org/licenses/by/4.0/'><img alt='Creative Commons License' style='border-width:0' src='https://i.creativecommons.org/l/by/4.0/80x15.png' /></a><br />Except where otherwise noted, content on this site is licensed under a <a rel='license' href='http://creativecommons.org/licenses/by/4.0/'>Creative Commons Attribution 4.0 International License</a>.<br /> Thoughts, views, and opinions on this site are my own.<br />Powered by <a href='https://gohugo.io/'>Hugo</a>. Theme based on <a href='https://themes.gohugo.io/kiss/'>kiss</a> by <a href='https://github.com/ribice'>ribice</a>.</copyright>
     
-	<atom:link href="https://leonardo2718.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://leonardo2718.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Easy Coconut Laddu</title>
-      <link>https://leonardo2718.github.io/posts/kitchen/coconut-laddu/</link>
+      <title>Posts</title>
+      <link>https://leonardo2718.github.io/posts/</link>
       <pubDate>Sat, 22 Feb 2020 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>https://leonardo2718.github.io/posts/</guid>
+      <description></description>
       
-      <guid>https://leonardo2718.github.io/posts/kitchen/coconut-laddu/</guid>
-      <description>&lt;div class=&#34;document&#34;&gt;
-
-
-&lt;p&gt;Coconut laddus are a traditional Indian sweet, often made for festive occasions.
-They&#39;re easy to make and taste delicious. As the name suggests, one of the main
-ingredients used is coconut, so these are often a favourite for anyone who loves coconut.&lt;/p&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
       <title>About Me</title>
       <link>https://leonardo2718.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+      <author></author>
       <guid>https://leonardo2718.github.io/about/</guid>
-      <description>I am just an ordinary human, living life and trying to understand the world around me.
-I love learning things. I&#39;m curious about a wide range of topics covering programming, math, science, music, philosophy, law, cooking, and studying different cultures. I fluently speak English, French, Spanish, and Italian. In my spare time, I work on personal projects.
-I have a Software Engineering degree and work for IBM as a JIT compiler developer on the Eclipse OMR and OpenJ9 projects.</description>
+      <description></description>
+      
     </item>
     
   </channel>
