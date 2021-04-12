@@ -1,47 +1,42 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
+    <loc>https://leonardo2718.github.io/tags/best-practices/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leonardo2718.github.io/tags/c&#43;&#43;/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leonardo2718.github.io/posts/programming/dont-use-fixed-width-integer-types-to-detect-type-size/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leonardo2718.github.io/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leonardo2718.github.io/posts/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leonardo2718.github.io/posts/programming/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leonardo2718.github.io/tags/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leonardo2718.github.io/tags/types/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://leonardo2718.github.io/posts/kitchen/coconut-laddu/</loc>
     <lastmod>2020-02-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://leonardo2718.github.io/posts/kitchen/</loc>
     <lastmod>2020-02-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leonardo2718.github.io/</loc>
-    <lastmod>2020-02-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leonardo2718.github.io/posts/</loc>
-    <lastmod>2020-02-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://leonardo2718.github.io/tags/recipe/</loc>
     <lastmod>2020-02-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leonardo2718.github.io/tags/</loc>
-    <lastmod>2020-02-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://leonardo2718.github.io/about/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://leonardo2718.github.io/categories/</loc>
   </url>
-  
-  <url>
-    <loc>https://leonardo2718.github.io/posts/software/</loc>
-  </url>
-  
 </urlset>

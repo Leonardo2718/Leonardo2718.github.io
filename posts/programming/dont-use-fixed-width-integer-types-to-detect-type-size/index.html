@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="en-us">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Don&#39;t use fixed-width integers to detect a type&#39;s size | Leonardo2718&#39;s Website</title>
+
+
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+<link rel="stylesheet" href="/style.css" />
+<link rel="canonical" href="https://leonardo2718.github.io/posts/programming/dont-use-fixed-width-integer-types-to-detect-type-size/">
+<meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://leonardo2718.github.io/">
+          <h1 id="nav-heading" class="title is-4">Leonardo2718&#39;s Website</h1>
+        </a>
+      </div>
+      <div class="nav-right">
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" title="github" aria-label="github" href='https://github.com/Leonardo2718' target='_blank' rel='noopener'>
+              <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+            </a><a class="level-item" title="linkedin" aria-label="linkedin" href='https://linkedin.com/in/Leonardo2718' target='_blank' rel='noopener'>
+              <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></span>
+            </a><a class="level-item" title="keybase" aria-label="keybase" href='https://keybase.io/leonardo2718' target='_blank' rel='noopener'>
+              <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M286.17 419a18 18 0 1 0 18 18 18 18 0 0 0-18-18zm111.92-147.6c-9.5-14.62-39.37-52.45-87.26-73.71q-9.1-4.06-18.38-7.27a78.43 78.43 0 0 0-47.88-104.13c-12.41-4.1-23.33-6-32.41-5.77-.6-2-1.89-11 9.4-35L198.66 32l-5.48 7.56c-8.69 12.06-16.92 23.55-24.34 34.89a51 51 0 0 0-8.29-1.25c-41.53-2.45-39-2.33-41.06-2.33-50.61 0-50.75 52.12-50.75 45.88l-2.36 36.68c-1.61 27 19.75 50.21 47.63 51.85l8.93.54a214 214 0 0 0-46.29 35.54C14 304.66 14 374 14 429.77v33.64l23.32-29.8a148.6 148.6 0 0 0 14.56 37.56c5.78 10.13 14.87 9.45 19.64 7.33 4.21-1.87 10-6.92 3.75-20.11a178.29 178.29 0 0 1-15.76-53.13l46.82-59.83-24.66 74.11c58.23-42.4 157.38-61.76 236.25-38.59 34.2 10.05 67.45.69 84.74-23.84.72-1 1.2-2.16 1.85-3.22a156.09 156.09 0 0 1 2.8 28.43c0 23.3-3.69 52.93-14.88 81.64-2.52 6.46 1.76 14.5 8.6 15.74 7.42 1.57 15.33-3.1 18.37-11.15C429 443 434 414 434 382.32c0-38.58-13-77.46-35.91-110.92zM142.37 128.58l-15.7-.93-1.39 21.79 13.13.78a93 93 0 0 0 .32 19.57l-22.38-1.34a12.28 12.28 0 0 1-11.76-12.79L107 119c1-12.17 13.87-11.27 13.26-11.32l29.11 1.73a144.35 144.35 0 0 0-7 19.17zm148.42 172.18a10.51 10.51 0 0 1-14.35-1.39l-9.68-11.49-34.42 27a8.09 8.09 0 0 1-11.13-1.08l-15.78-18.64a7.38 7.38 0 0 1 1.34-10.34l34.57-27.18-14.14-16.74-17.09 13.45a7.75 7.75 0 0 1-10.59-1s-3.72-4.42-3.8-4.53a7.38 7.38 0 0 1 1.37-10.34L214 225.19s-18.51-22-18.6-22.14a9.56 9.56 0 0 1 1.74-13.42 10.38 10.38 0 0 1 14.3 1.37l81.09 96.32a9.58 9.58 0 0 1-1.74 13.44zM187.44 419a18 18 0 1 0 18 18 18 18 0 0 0-18-18z"/></svg></span>
+            </a></nav>
+      </div>
+    </nav>
+
+    <nav class="nav">
+      
+      <div class="nav-left"><a class="nav-item" href="/">
+          <h2 class="title is-5">Home</h2>
+        </a><a class="nav-item" href="/about">
+          <h2 class="title is-5">About Me</h2>
+        </a><a class="nav-item" href="/posts/kitchen">
+          <h2 class="title is-5">Kitchen</h2>
+        </a><a class="nav-item" href="/posts/programming">
+          <h2 class="title is-5">Programming</h2>
+        </a><a class="nav-item" href="/tags">
+          <h2 class="title is-5">Tags</h2>
+        </a></div>
+      
+
+      
+    </nav>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="subtitle tags is-6 is-pulled-right">
+      <a href="/posts/programming/" class="subtitle is-6">/programming</a>
+
+      
+      
+<a class="subtitle is-6" href="/tags/best-practices">#best practices</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/types">#types</a>
+  
+  | <a class="subtitle is-6" href="/tags/c&#43;&#43;">#C&#43;&#43;</a>
+  
+
+      
+    </div>
+    <h2 class="subtitle is-6">2021-04-12</h2>
+
+    <h1 class="title">Don&#39;t use fixed-width integers to detect a type&#39;s size</h1>
+    
+
+
+    
+    <div class="content">
+      <p>As a compiler developer, I see a lot of code that deals with data types and many different ways of using data types.</p>
+<p>A problem that I have encountered a few times, despite being rather rare, is using fixed-width integer types to parameterize code on the size of types. When writing compilers or other programs that need to operate on data types directly, you often need code that behaves differently for different static types. For example, a serialization framework might need to change behaviour depending on the size of different integer types. In a compiler, you might encode the size of a type in a data structure like the Intermediate Language. One attempt to implement such behaviour is to overload a function using fixed-width integer types, with each overload being responsible for handling a specific size. However, a few subtleties in the C++ type system make this approach problematic for code maintainability and portability.</p>
+<p>In this post, I explain the different problems that can happen when using fixed-width integer types to overload functions and provide alternative approaches for achieving the intended goal.</p>
+<h2 id="the-naive-approach">The naive approach</h2>
+<p>Let&rsquo;s consider a simple function, <code>foo()</code>, with four overload definitions, one for each signed integer bit-width:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">int8_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">int16_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">int32_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">int64_t</span>) {}
+</code></pre></td></tr></table>
+</div>
+</div><p>Naively, one might think that <code>foo()</code> is callable with any integer type. This is, however, not the case.</p>
+<p>Trying to compile this simple example:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#00f">int</span> <span style="color:#c34e00">main</span>() {
+    <span style="color:#00f">uint32_t</span> x = 42;
+    foo(x);
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>we quickly get errors about an ambiguous call:</p>
+<pre><code>error: call to 'foo' is ambiguous
+    foo(x);
+    ^~~
+&lt;source&gt;:4:6: note: candidate function
+void foo(int8_t) {}
+     ^
+&lt;source&gt;:5:6: note: candidate function
+void foo(int16_t) {}
+     ^
+&lt;source&gt;:6:6: note: candidate function
+void foo(int32_t) {}
+     ^
+&lt;source&gt;:7:6: note: candidate function
+void foo(int64_t) {}
+     ^
+1 error generated.
+</code></pre><p>The compiler even helpfully lists all the functions we&rsquo;ve defined as possible overload candidates.</p>
+<p>The call is ambiguous because implicit conversions do not impose an ordering on overload resolution. Since we are passing a <code>uint32_t</code> to <code>foo()</code>, and <code>foo()</code> only has definitions with signed types, the compiler will try to apply an implicit conversion. Unfortunately for us, as far as the compiler is concerned, <code>int8_t</code> and <code>int64_</code> (and every <code>int*_t</code> in between) are equally appropriate targets for an implicit conversion from <code>uint32_t</code>. The compiler doesn&rsquo;t consider the fact that <code>int32_t</code> and <code>uint32_t</code> have the same bit-width when deciding which overload to pick for the call.</p>
+<p>Note that changing all the overloads to use <code>uint*_t</code> instead won&rsquo;t help because that will just invert the problem.</p>
+<h2 id="the-wrong-solution">The wrong solution</h2>
+<p>To work around the problem, one might be tempted to define overloads for both signed and unsigned types:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">int8_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">int16_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">int32_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">int64_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">uint8_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">uint16_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">uint32_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">uint64_t</span>) {}
+</code></pre></td></tr></table>
+</div>
+</div><p>However, besides possible issues with code duplication, there are still portability problems with this approach.</p>
+<p>Let&rsquo;s consider this example now:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#00f">int</span> <span style="color:#c34e00">main</span>() {
+    <span style="color:#00f">unsigned</span> <span style="color:#00f">long</span> x = 42;
+    foo(x);
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>At first glance, the code seems like it should work fine. And it will&hellip; sometimes.</p>
+<p>If you compile the code using clang, everything is fine. With gcc, everything is still ok. But with MSVC, you get an error like this:</p>
+<pre><code>error C2668: 'foo': ambiguous call to overloaded function
+</code></pre><p>No, this not an MSVC bug -_-</p>
+<p>Let&rsquo;s try changing the <code>unsigned long</code> to <code>unsigned long long</code></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#00f">int</span> <span style="color:#c34e00">main</span>() {
+    <span style="color:#00f">unsigned</span> <span style="color:#00f">long</span> <span style="color:#00f">long</span> x = 42;
+    foo(x);
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>Now MSVC accepts the code, but gcc and clang say the call is ambiguous!</p>
+<p>So, what&rsquo;s going on?</p>
+<h2 id="the-problem">The problem</h2>
+<p>If you&rsquo;re using fix-width integer types, you probably already know that C++ doesn&rsquo;t guarantee what the bit-width of primitive integer types should be. For example, <code>long</code> is 64 bits on some systems but 32 bits on others.</p>
+<p>A subtle implication is that multiple primitive integer types can have <em>the same</em> bit-width. For example, in gcc and clang on x86-64, <code>long</code> and <code>long long</code> are both 64 bits. However, in MSVC (also on x86-64) <code>int</code> and <code>long</code> are 32 bits.</p>
+<p>Now, because fixed-width integer types are just typedefs for some primitive type, <strong>one of the two types will not have an associated fixed-width typedef</strong>. For gcc and clang, <code>int64_t</code> can only map to one of <code>long</code> or <code>long long</code>. Similarly, for MSVC, <code>int32_t</code> can only map to one of <code>int</code> or <code>long</code>.</p>
+<p>As a result, calling <code>foo()</code> with whichever type is <em>not</em> covered by a typedef will require an implicit conversion. And, as we previously saw, implicit conversions are not prioritized, so we get ambiguity.</p>
+<h2 id="the-special-char-problem">The special <code>char</code> problem</h2>
+<p>The type <code>char</code> has an additional, subtle oddity that breaks the code. For other integer types like <code>int</code>, <code>signed</code> is implied when not explicitly specified (i.e. <code>int</code> is the same as <code>signed int</code>). However, C++ requires that <code>char</code>, <code>signed char</code>, and <code>unsigned char</code> all be distinct types. Also, <code>char</code> can be either signed or unsigned. It&rsquo;s up to the compiler to decide which it will be.</p>
+<p>As a result, the exact behaviour of, for example, <code>foo('a')</code> will depend on the exact compiler you use. It might call <code>foo(int8_t)</code> or <code>foo(uint8_t)</code>&hellip; or something else. Using clang as an example, <code>int8_t</code> is a typedef for <code>signed char</code> and <code>uint8_t</code> is a typedef for <code>unsigned char</code>.  So <code>foo('a')</code> will not match any of the overloads we have defined. However, <code>'a'</code>, which is of type <code>char</code>, is subject to integer promotion, which happens <em>before</em> implicit conversions. So, because clang also happens to define <code>int32_t</code> as a typedef of <code>int</code>, <code>foo('a')</code> will actually call <code>foo(int)</code>, which is <code>foo(int32_t)</code>.</p>
+<p>You can see this for your self by looking at the un-optimized assembly code clang generates for the main function in:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#f00;font-style:italic">#include</span> <span style="color:#f00;font-style:italic">&lt;cstdint&gt;</span><span style="color:#f00;font-style:italic">
+</span><span style="color:#f00;font-style:italic"></span>
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">int8_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">int16_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">int32_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">int64_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">uint8_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">uint16_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">uint32_t</span>) {}
+<span style="color:#00f">void</span> <span style="color:#c34e00">foo</span>(<span style="color:#00f">uint64_t</span>) {}
+
+<span style="color:#00f">int</span> <span style="color:#c34e00">main</span>() {
+    foo(<span style="color:#009c00">&#39;a&#39;</span>);
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>which looks something like this (see <a href="https://godbolt.org/z/E3qds5fKP">here</a>):</p>
+<pre><code>main:
+ push rbp
+ mov rbp,rsp
+ mov edi,0x61
+ call 401130 &lt;foo(int)&gt;  // &lt;-- this is the call to foo('a')
+ xor eax,eax
+ pop rbp
+ ret 
+ nop WORD PTR cs:[rax+rax*1+0x0]
+ nop DWORD PTR [rax+0x0]
+</code></pre><h2 id="the-proper-solutions">The proper solution(s)</h2>
+<p>The basic solution is to define overloads for the primitive integer types and use <code>sizeof()</code> to get each type&rsquo;s size.</p>
+<p>However, a more compact approach is to use templates and <code>sizeof()</code>:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#00f">template</span> &lt;<span style="color:#00f">typename</span> T&gt;
+<span style="color:#00f">void</span> foo(T x) {
+    <span style="color:#00f">constexpr</span> <span style="color:#00f">auto</span> size = <span style="color:#00f">sizeof</span>(T);
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>If you want to be sure that only integer types are accepted, add a <code>static_assert</code> with <code>std::is_integral_v&lt;T&gt;</code> (or <code>std::is_integral&lt;T&gt;::value</code> if you only have C++11):</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#00f">template</span> &lt;<span style="color:#00f">typename</span> T&gt;
+<span style="color:#00f">void</span> foo(T x) {
+    <span style="color:#00f">static_assert</span>(std::is_integral_v&lt;T&gt;, <span style="color:#009c00">&#34;foo() can only be called with integer arguments&#34;</span>);
+    <span style="color:#00f">constexpr</span> <span style="color:#00f">auto</span> size = <span style="color:#00f">sizeof</span>(T);
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>If you need to implement different behaviour depending on the size, use <code>if constexpr</code> (a plain <code>if</code> would also work):</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#00f">template</span> &lt;<span style="color:#00f">typename</span> T&gt;
+<span style="color:#00f">void</span> foo(T x) {
+    <span style="color:#00f">static_assert</span>(std::is_integral_v&lt;T&gt;, <span style="color:#009c00">&#34;foo() can only be called with integer arguments&#34;</span>);
+    <span style="color:#00f">constexpr</span> <span style="color:#00f">auto</span> size = <span style="color:#00f">sizeof</span>(T); 
+    <span style="color:#00f">if</span> <span style="color:#c34e00">constexpr</span> (size == 1) {}
+    <span style="color:#00f">else</span> <span style="color:#00f">if</span> <span style="color:#c34e00">constexpr</span> (size == 2) {}
+    <span style="color:#00f">else</span> <span style="color:#00f">if</span> <span style="color:#c34e00">constexpr</span> (size == 4) {}
+    <span style="color:#00f">else</span> <span style="color:#00f">if</span> <span style="color:#c34e00">constexpr</span> (size == 8) {}
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>You can also use<code>std::enable_if</code> (yes this is going to get ugly):</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#00f">template</span> &lt;<span style="color:#00f">typename</span> T&gt;
+<span style="color:#00f">typename</span> std::enable_if&lt;std::is_integral_v&lt;T&gt; &amp;&amp; <span style="color:#00f">sizeof</span>(T) == 1, <span style="color:#00f">void</span>&gt;::type
+foo(T) {}
+
+<span style="color:#00f">template</span> &lt;<span style="color:#00f">typename</span> T&gt;
+<span style="color:#00f">typename</span> std::enable_if&lt;std::is_integral_v&lt;T&gt; &amp;&amp; <span style="color:#00f">sizeof</span>(T) == 2, <span style="color:#00f">void</span>&gt;::type
+foo(T) {}
+
+<span style="color:#00f">template</span> &lt;<span style="color:#00f">typename</span> T&gt;
+<span style="color:#00f">typename</span> std::enable_if&lt;std::is_integral_v&lt;T&gt; &amp;&amp; <span style="color:#00f">sizeof</span>(T) == 4, <span style="color:#00f">void</span>&gt;::type
+foo(T) {}
+
+<span style="color:#00f">template</span> &lt;<span style="color:#00f">typename</span> T&gt;
+<span style="color:#00f">typename</span> std::enable_if&lt;std::is_integral_v&lt;T&gt; &amp;&amp; <span style="color:#00f">sizeof</span>(T) == 8, <span style="color:#00f">void</span>&gt;::type
+foo(T) {}
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="a-final-note-about-sizeof">A final note about <code>sizeof()</code></h2>
+<p>An astute reader will have noted that using <code>sizeof()</code> can also pose portability problems.</p>
+<p><code>sizeof()</code> evaluates to the number of bytes used to store a given type.</p>
+<p>While we usually assume that a byte is 8 bits long, C++ doesn&rsquo;t actually guarantee this. Specifically, the number of bits in a byte is defined as whatever number of bits is used to store a <code>char</code>; i.e. <code>CHAR_BITS</code> (see <a href="https://en.cppreference.com/w/cpp/types/climits">cppreference.com</a>). Because C++ also doesn&rsquo;t specify the exact number of bits in a <code>char</code> (only that it must be at least 8), a compiler <em>could</em> define <code>char</code> as being larger than 8 bits. In fact, every integer type could be 64 bits long and <code>sizeof()</code> would evaluate to 1 for all of them, and the compiler would still be spec-compliant.</p>
+<p>However, in practice, platforms where <code>char</code> (and therefore, a byte) is <em>not</em> 8 bits are extremely rare. So, for most practical purposes, assuming that a byte is 8 bits longs is ok and <code>sizeof()</code> will behave as we expect :)</p>
+
+      
+    </div>
+    
+  </div>
+</section>
+
+
+
+<footer class="section">
+  <div class="container has-text-centered">
+    <p>Copyright &copy; 2020, Leonardo Banderali<br /><a rel='license' href='http://creativecommons.org/licenses/by/4.0/'><img alt='Creative Commons License' style='border-width:0' src='https://i.creativecommons.org/l/by/4.0/80x15.png' /></a><br />Except where otherwise noted, content on this site is licensed under a <a rel='license' href='http://creativecommons.org/licenses/by/4.0/'>Creative Commons Attribution 4.0 International License</a>.<br /> Thoughts, views, and opinions on this site are my own.<br />Powered by <a href='https://gohugo.io/'>Hugo</a>. Theme based on <a href='https://themes.gohugo.io/kiss/'>kiss</a> by <a href='https://github.com/ribice'>ribice</a>.</p>
+    
+  </div>
+</footer>
+
+
+
+</body>
+</html>
+
